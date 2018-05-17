@@ -10,6 +10,7 @@ if __name__ == '__main__':
     url = 'http://www.iqianyue.com/mypost'
     data = parser.urlencode({'name':'litao', 'pass': '123456'}).encode('utf-8')
     req = request.Request(url, data)
+    req.add_header('User-Agent', config.user_agent)
 
     with request.urlopen(req, timeout=5) as f:
         print(f.read().decode('utf-8'))
